@@ -6,6 +6,7 @@ jobs:
     environment:
       IMAGE_NAME: ghcr.io/pakornpk/do-kubernetes-sample-app:latest
     working_directory: ~/app
+    machine: true
     steps:
       - checkout
       - setup_remote_docker
