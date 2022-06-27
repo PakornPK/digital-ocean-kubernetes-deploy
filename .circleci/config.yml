@@ -1,6 +1,7 @@
 version: 2.1
 jobs:
   build:
+    machine: true
     docker:
       - image: ghcr.io/pakornpk/do-kubernetes-sample-app
     environment:
@@ -12,14 +13,12 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            echo "START BUILD"
-            /mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe build -t $IMAGE_NAME:latest .
+            docker build -t $IMAGE_NAME:latest .
       - run:
           name: Push Docker Image
           command: |
-            echo "START RELEASE"
             echo "$PAT" | docker login ghcr.io -u $USERNAME --password-stdin
-            /mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe push $IMAGE_NAME:latest
+            docker push $IMAGE_NAME:latest
 workflows:
   version: 2
   build-deploy-master:
