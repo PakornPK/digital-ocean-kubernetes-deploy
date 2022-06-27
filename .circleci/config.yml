@@ -1,9 +1,8 @@
 version: 2.1
 jobs:
   build:
-    machine: true
     docker:
-      - image: ghcr.io/pakornpk/do-kubernetes-sample-app
+      - image: circleci/nginx:1.21
     environment:
       IMAGE_NAME: ghcr.io/pakornpk/do-kubernetes-sample-app:latest
     working_directory: ~/app
