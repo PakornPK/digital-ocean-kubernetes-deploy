@@ -2,11 +2,10 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: nginx:1.21
+      - image: circleci/buildpack-deps:bullseye
     environment:
       IMAGE_NAME: ghcr.io/pakornpk/do-kubernetes-sample-app:latest
     working_directory: ~/app
-    machine: true
     steps:
       - checkout
       - setup_remote_docker
